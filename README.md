@@ -1,14 +1,14 @@
-# @numra/angular
+# @getnumra/angular
 
 **A debounced phone-check service and a risk badge for Angular, talking to your own backend.**
 
-[![npm version](https://img.shields.io/npm/v/@numra/angular)](https://www.npmjs.com/package/@numra/angular) [![npm downloads](https://img.shields.io/npm/dm/@numra/angular)](https://www.npmjs.com/package/@numra/angular) [![licence: MIT](https://img.shields.io/npm/l/@numra/angular)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/@getnumra/angular)](https://www.npmjs.com/package/@getnumra/angular) [![npm downloads](https://img.shields.io/npm/dm/@getnumra/angular)](https://www.npmjs.com/package/@getnumra/angular) [![licence: MIT](https://img.shields.io/npm/l/@getnumra/angular)](LICENSE)
 
 The browser half, Angular-shaped. Calls **your** backend — it never holds a
 Numra API key and cannot be made to.
 
 ```bash
-npm install @numra/angular
+npm install @getnumra/angular
 ```
 
 Angular 16 and up. Signals, standalone components, no RxJS required.
@@ -16,7 +16,7 @@ Angular 16 and up. Signals, standalone components, no RxJS required.
 ## You need the other half first
 
 This package talks to an endpoint you mount yourself, with one of:
-`@numra/express`, `@numra/fastify`, `@numra/next`, `@numra/nuxt`,
+`@getnumra/express`, `@getnumra/fastify`, `@getnumra/next`, `@getnumra/nuxt`,
 `numra/laravel`, or `Numra\Handlers` in plain PHP. That endpoint holds the key.
 
 Numra reads a shared fraud ledger, so a key in a bundle is a key in everyone's
@@ -27,7 +27,7 @@ the compiled bundle to keep it that way.
 
 ```ts
 // app.config.ts
-import { provideNumra } from '@numra/angular';
+import { provideNumra } from '@getnumra/angular';
 
 export const appConfig = {
   providers: [provideNumra({ endpoint: '/api/numra' })],
@@ -37,7 +37,7 @@ export const appConfig = {
 ```ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NumraCheckService, RiskBadgeComponent } from '@numra/angular';
+import { NumraCheckService, RiskBadgeComponent } from '@getnumra/angular';
 
 @Component({
   standalone: true,
@@ -69,7 +69,7 @@ overwrite each other's verdict.
 - **Clears the verdict when the field is cleared.**
 - **Cancels on destroy**, via `ngOnDestroy`.
 
-All of that lives in `@numra/browser`, shared with the React, Vue and Svelte
+All of that lives in `@getnumra/browser`, shared with the React, Vue and Svelte
 packages, so the four cannot drift apart.
 
 ## Reading the result
@@ -136,11 +136,11 @@ Server:
 
 | Package | Repository |
 |---|---|
-| `@numra/core` | [numra-js-core](https://github.com/NumraApp/numra-js-core) |
-| `@numra/express` | [numra-express](https://github.com/NumraApp/numra-express) |
-| `@numra/fastify` | [numra-fastify](https://github.com/NumraApp/numra-fastify) |
-| `@numra/next` | [numra-next](https://github.com/NumraApp/numra-next) |
-| `@numra/nuxt` | [numra-nuxt](https://github.com/NumraApp/numra-nuxt) |
+| `@getnumra/core` | [numra-js-core](https://github.com/NumraApp/numra-js-core) |
+| `@getnumra/express` | [numra-express](https://github.com/NumraApp/numra-express) |
+| `@getnumra/fastify` | [numra-fastify](https://github.com/NumraApp/numra-fastify) |
+| `@getnumra/next` | [numra-next](https://github.com/NumraApp/numra-next) |
+| `@getnumra/nuxt` | [numra-nuxt](https://github.com/NumraApp/numra-nuxt) |
 | `numra/numra-php` | [numra-php](https://github.com/NumraApp/numra-php) |
 | `numra/laravel` | [numra-laravel](https://github.com/NumraApp/numra-laravel) |
 
@@ -148,11 +148,11 @@ Browser:
 
 | Package | Repository |
 |---|---|
-| `@numra/browser` | [numra-browser](https://github.com/NumraApp/numra-browser) |
-| `@numra/react` | [numra-react](https://github.com/NumraApp/numra-react) |
-| `@numra/vue` | [numra-vue](https://github.com/NumraApp/numra-vue) |
-| `@numra/svelte` | [numra-svelte](https://github.com/NumraApp/numra-svelte) |
-| `@numra/angular` | [numra-angular](https://github.com/NumraApp/numra-angular) — this repo |
+| `@getnumra/browser` | [numra-browser](https://github.com/NumraApp/numra-browser) |
+| `@getnumra/react` | [numra-react](https://github.com/NumraApp/numra-react) |
+| `@getnumra/vue` | [numra-vue](https://github.com/NumraApp/numra-vue) |
+| `@getnumra/svelte` | [numra-svelte](https://github.com/NumraApp/numra-svelte) |
+| `@getnumra/angular` | [numra-angular](https://github.com/NumraApp/numra-angular) — this repo |
 
 Documentation for all of them is at [numra.ma/docs](https://numra.ma/docs).
 

@@ -1,13 +1,13 @@
 import { Injectable, InjectionToken, OnDestroy, computed, inject, signal } from '@angular/core';
-import { createCheckController, IDLE } from '@numra/browser';
+import { createCheckController, IDLE } from '@getnumra/browser';
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   @numra/angular — the browser half, Angular-shaped
+   @getnumra/angular — the browser half, Angular-shaped
    ───────────────────────────────────────────────────────────────────────────
    No apiKey option, and no way to add one: this package talks to YOUR
    backend, the endpoint one of the server packages mounts.
 
-   Debounce, abort and stale-answer rejection live in @numra/browser's
+   Debounce, abort and stale-answer rejection live in @getnumra/browser's
    controller, shared with React, Vue and Svelte — see there for why a late
    answer is dropped by identity rather than by catching AbortError.
 

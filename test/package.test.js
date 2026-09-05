@@ -18,7 +18,7 @@ const dist = path.join(root, 'dist');
 
    What is left to check here is what a compile cannot: that the thing about
    to be published carries no credential, and that its manifest points at
-   files that exist. Behaviour lives in @numra/browser and is tested there.
+   files that exist. Behaviour lives in @getnumra/browser and is tested there.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 const distPkg = () => JSON.parse(fs.readFileSync(path.join(dist, 'package.json'), 'utf8'));
@@ -27,7 +27,7 @@ test('the build produced something publishable', () => {
   assert.ok(fs.existsSync(dist), 'run `npm run build` first');
   const p = distPkg();
 
-  assert.equal(p.name, '@numra/angular');
+  assert.equal(p.name, '@getnumra/angular');
   /* ng-packagr strips scripts and devDependencies from the published
      manifest. If they ever come back, a merchant installing this package
      would pull the entire Angular toolchain. */
@@ -41,12 +41,12 @@ test('the build produced something publishable', () => {
   }
 });
 
-test('@numra/browser ships as a real dependency, not a peer', () => {
+test('@getnumra/browser ships as a real dependency, not a peer', () => {
   /* It is ours and it is tiny. Making a merchant install it themselves is a
      step that adds nothing and can be got wrong. */
   const p = distPkg();
-  assert.equal(p.dependencies['@numra/browser'], '^1.0.0');
-  assert.ok(!('@numra/browser' in (p.peerDependencies ?? {})));
+  assert.equal(p.dependencies['@getnumra/browser'], '^1.0.0');
+  assert.ok(!('@getnumra/browser' in (p.peerDependencies ?? {})));
 });
 
 test('the peer range the package claims is the one it was compiled for', () => {
@@ -108,7 +108,7 @@ test('no source file holds a credential or reaches the Numra API', () => {
     assert.ok(!/apiKey|api_key|API_KEY/.test(s), `${f} mentions an API key`);
     assert.ok(!/secret/i.test(s), `${f} mentions a secret`);
     assert.ok(!/api\.numra\.ma/.test(s), `${f} targets the Numra API directly`);
-    assert.ok(!/\bfetch\s*\(/.test(s), `${f} makes its own request instead of using @numra/browser`);
+    assert.ok(!/\bfetch\s*\(/.test(s), `${f} makes its own request instead of using @getnumra/browser`);
   }
 });
 
@@ -131,9 +131,9 @@ test('neither does the compiled bundle', () => {
   }
 });
 
-test('the package does not depend on @numra/core', () => {
-  /* @numra/core throws in a browser by design. */
+test('the package does not depend on @getnumra/core', () => {
+  /* @getnumra/core throws in a browser by design. */
   const p = distPkg();
   const deps = { ...p.dependencies, ...p.peerDependencies };
-  assert.ok(!('@numra/core' in deps));
+  assert.ok(!('@getnumra/core' in deps));
 });

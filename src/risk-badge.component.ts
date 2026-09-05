@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { badgeParts, styleString } from '@numra/browser';
+import { badgeParts, styleString } from '@getnumra/browser';
 
 /* A presentational badge. No fetching, no key, no opinion about your layout.
 
-   The label, the colours and the geometry come from @numra/browser, shared
+   The label, the colours and the geometry come from @getnumra/browser, shared
    with the React, Vue and Svelte packages — a merchant running two of ours on
    two pages must not see two different badges. See that package for why
    blacklisted outranks the band and why unrated has its own words.

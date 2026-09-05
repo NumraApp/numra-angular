@@ -1,5 +1,5 @@
 {
-  "name": "@numra/angular",
+  "name": "@getnumra/angular",
   "version": "1.0.0",
   "description": "Angular service and standalone components for Numra. Calls your own backend — never holds an API key.",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "test": "npm run build && node --test \"test/*.test.js\"",
     "prepublishOnly": "echo 'Publish the build, not the repo root: npm run build && npm publish ./dist. The leading ./ is required — a bare `npm publish dist` is a package SPEC, and npm will happily publish an unrelated registry package called dist. The root has no entry point: Angular components must be compiled ahead of time, so a root publish ships .ts that resolves to nothing and every import fails with ERR_MODULE_NOT_FOUND.' >&2 && exit 1"
   },
-  "dependencies": { "@numra/browser": "^1.0.0", "tslib": "^2.6.0" },
+  "dependencies": { "@getnumra/browser": "^1.0.0", "tslib": "^2.6.0" },
   "peerDependencies": {
     "@angular/common": ">=16",
     "@angular/core": ">=16"
