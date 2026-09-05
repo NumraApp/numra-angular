@@ -23,6 +23,14 @@ const dist = path.join(root, 'dist');
 
 const distPkg = () => JSON.parse(fs.readFileSync(path.join(dist, 'package.json'), 'utf8'));
 
+/* ng-packagr names the flat bundle after the package: @scope/name becomes
+   scope-name.mjs. Derived from the manifest rather than written out, because
+   as a literal it silently pointed at a file the build no longer produced the
+   moment the npm scope changed — and that surfaced in CI, after the tag was
+   already public. */
+const fesmPath = () =>
+  path.join(dist, 'fesm2022', distPkg().name.replace(/^@/, '').replace(/\//g, '-') + '.mjs');
+
 test('the build produced something publishable', () => {
   assert.ok(fs.existsSync(dist), 'run `npm run build` first');
   const p = distPkg();
@@ -75,9 +83,7 @@ test('the badge that ships is announced, and can say a lookup failed', () => {
      stripped, so a sentence ABOUT role="status" cannot stand in for the
      attribute. ng-packagr compiles partially, which leaves the template and
      the input list in the bundle verbatim. */
-  const bundle = stripComments(
-    fs.readFileSync(path.join(dist, 'fesm2022', 'numra-angular.mjs'), 'utf8'),
-  );
+  const bundle = stripComments(fs.readFileSync(fesmPath(), 'utf8'));
 
   assert.match(bundle, /<span \*ngIf="parts as p" role="status"/, 'the badge is not a live region');
   /* No aria-label: the label is the text inside, and naming it twice reads
