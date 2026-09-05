@@ -1,0 +1,34 @@
+{
+  "name": "@numra/angular",
+  "version": "1.0.0",
+  "description": "Angular service and standalone components for Numra. Calls your own backend — never holds an API key.",
+  "license": "MIT",
+  "homepage": "https://numra.ma",
+  "repository": { "type": "git", "url": "git+https://github.com/NumraApp/numra-angular.git" },
+  "bugs": { "url": "https://github.com/NumraApp/numra-angular/issues" },
+  "keywords": ["numra", "angular", "cod", "fraud", "morocco"],
+  "type": "module",
+  "sideEffects": false,
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "build": "ng-packagr -p ng-package.json",
+    "test": "npm run build && node --test \"test/*.test.js\"",
+    "prepublishOnly": "echo 'Publish the build, not the repo root: npm run build && npm publish ./dist. The leading ./ is required — a bare `npm publish dist` is a package SPEC, and npm will happily publish an unrelated registry package called dist. The root has no entry point: Angular components must be compiled ahead of time, so a root publish ships .ts that resolves to nothing and every import fails with ERR_MODULE_NOT_FOUND.' >&2 && exit 1"
+  },
+  "dependencies": { "@numra/browser": "^1.0.0", "tslib": "^2.6.0" },
+  "peerDependencies": {
+    "@angular/common": ">=16",
+    "@angular/core": ">=16"
+  },
+  "devDependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/compiler-cli": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "ng-packagr": "^18.2.0",
+    "rxjs": "^7.8.0",
+    "typescript": "~5.4.0",
+    "zone.js": "^0.14.0"
+  },
+  "publishConfig": { "access": "public", "provenance": true }
+}

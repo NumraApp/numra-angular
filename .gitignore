@@ -1,0 +1,9 @@
+/dist/
+/node_modules/
+
+# `npm pack` output. Committing one means the next reader cannot tell which
+# tarball was actually published.
+*.tgz
+
+npm-debug.log*
+.DS_Store
